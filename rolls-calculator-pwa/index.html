@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rolls Calculator</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4caf50">
+</head>
+<body>
+<h2>🎲 Rolls Calculator</h2>
+<p>PWA Ready</p>
+
+<div id="update" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;
+background:#4caf50;padding:12px;border-radius:10px;font-weight:600;">
+New version available
+<button onclick="location.reload()">Update</button>
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js').then(reg => {
+    reg.addEventListener('updatefound', () => {
+      document.getElementById('update').style.display = 'block';
+    });
+  });
+}
+</script>
+</body>
+</html>
